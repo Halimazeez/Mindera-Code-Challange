@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Card from './Card';
+
 class App extends Component {
   constructor() {
     super();
@@ -26,21 +27,36 @@ class App extends Component {
       });
   }
 
+  isUndefined = data => {
+    let finalSubTitle = '';
+    if (typeof data === 'undefined') {
+      finalSubTitle = '\xa0'; //space in js
+    } else {
+      finalSubTitle = data;
+    }
+
+    return finalSubTitle;
+  };
+
   render() {
-    const { jsonData } = this.state;
     if (this.state.loading) {
       return <div>Loading</div>;
     }
     return (
       <div style={styles.root}>
-        {console.log(jsonData)};
-        <Card
-          header={jsonData[0].title}
-          subheader="Header test"
-          image="https://picsum.photos/300/150/?random"
-          liked="true"
-          text="We act like humans, we talk like humans, and we think like humans. And we call out anyone who does the opposite."
-        />
+        {this.state.jsonData.map((data, jindex) => (
+          <Card
+            {...console.log(data.is_liked)}
+            key={jindex}
+            id={data.id}
+            header={data.title}
+            subheader={this.isUndefined(data.subtitle)}
+            image={data.image_url}
+            liked={data.is_liked}
+            href={data.href}
+            text={data.text}
+          />
+        ))}
       </div>
     );
   }

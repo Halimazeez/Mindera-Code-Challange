@@ -9,25 +9,28 @@ class Card extends Component {
 
     return (
       <section style={styles.root}>
-        <div style={styles.sectionImg}>
-          <img src={this.props.image} style={styles.img} alt="Random" />
-        </div>
-
-        <img src={avatarurl} style={styles.avatar} alt="Avatar" />
-
-        <div style={styles.sectionHeader}>
-          <div style={styles.sectionHeaderText}>
-            <h1 style={styles.header}>{this.props.header}</h1>
-            <h5 style={styles.subheader}>{this.props.subheader}</h5>
+        <a href={this.props.href} style={styles.href}>
+          <div style={styles.sectionImg}>
+            <img src={this.props.image} style={styles.img} alt="Random" />
           </div>
-        </div>
 
-        <div style={styles.sectionTxt}>{this.props.text}</div>
+          <img src={avatarurl} style={styles.avatar} alt="Avatar" />
 
+          <div style={styles.sectionHeader}>
+            <div style={styles.sectionHeaderText}>
+              <h1 style={styles.header}>{this.props.header}</h1>
+              <h5 style={styles.subheader}>{this.props.subheader}</h5>
+            </div>
+          </div>
+
+          <div style={styles.sectionTxt}>{this.props.text}</div>
+        </a>
         <div style={styles.actionBtn}>
-          {this.props.liked === 'true' ? (
+          {this.props.liked === true ? (
             <div>
-              <div>&#10084;</div>
+              <a href="#" style={styles.href}>
+                <div>&#10084;</div>
+              </a>
             </div>
           ) : (
             <div>&#9825;</div>
@@ -114,8 +117,15 @@ const styles = {
   actionBtn: {
     color: '#27ae60',
     textAlign: 'center',
-    fontSize: 30,
-    marginBottom: 20
+    fontSize: '30px',
+    lineHeight: '40px',
+    width: '50px',
+    margin: 'auto'
+  },
+
+  //Link decoration
+  href: {
+    textDecoration: 'none'
   }
 };
 
