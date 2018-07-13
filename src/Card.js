@@ -10,10 +10,10 @@ class Card extends Component {
     return (
       <section style={styles.root}>
         <div style={styles.sectionImg}>
-          <img src={this.props.image} style={styles.img} />
+          <img src={this.props.image} style={styles.img} alt="Random" />
         </div>
 
-        <img src={avatarurl} style={styles.avatar} />
+        <img src={avatarurl} style={styles.avatar} alt="Avatar" />
 
         <div style={styles.sectionHeader}>
           <div style={styles.sectionHeaderText}>
@@ -25,7 +25,7 @@ class Card extends Component {
         <div style={styles.sectionTxt}>{this.props.text}</div>
 
         <div style={styles.actionBtn}>
-          {this.props.liked == 'true' ? (
+          {this.props.liked === 'true' ? (
             <div>
               <div>&#10084;</div>
             </div>
