@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import 'typeface-roboto';
 import Card from './Card';
 class App extends Component {
   render() {
@@ -9,6 +8,8 @@ class App extends Component {
           header="We are Humans"
           subheader="and we love humans"
           image="https://picsum.photos/300/150/?random"
+          liked="true"
+          text="We act like humans, we talk like humans, and we think like humans. And we call out anyone who does the opposite."
         />
       </div>
     );
