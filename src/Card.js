@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import './styles/card.css';
 
 class Card extends Component {
   sendCallBack = () => {
@@ -14,7 +15,7 @@ class Card extends Component {
       'https://media.licdn.com/dms/image/C4D03AQEcGwaJjqKikA/profile-displayphoto-shrink_200_200/0?e=1536796800&v=beta&t=Clz9gIhNEeAcdVStgHEk3yrVhINIIVI40giF41oVXTY';
 
     return (
-      <section style={styles.root}>
+      <section style={styles.root} className="hover">
         <a href={this.props.href} style={styles.href}>
           <div style={styles.sectionImg}>
             <img src={this.props.image} style={styles.img} alt="Random" />

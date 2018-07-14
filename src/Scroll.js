@@ -4,12 +4,16 @@ export default class Scroll extends Component {
   render() {
     return (
       <div style={styles.buttons}>
-        <i className="material-icons" style={styles.href}>
-          chevron_left
-        </i>
-        <i className="material-icons" style={styles.href}>
-          chevron_right
-        </i>
+        <div onClick={this.props.leftClick}>
+          <i className="material-icons" style={styles.href}>
+            chevron_left
+          </i>
+        </div>
+        <div onClick={this.props.rightClick}>
+          <i className="material-icons" style={styles.href}>
+            chevron_right
+          </i>
+        </div>
       </div>
     );
   }

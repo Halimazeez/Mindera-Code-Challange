@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Card from './Card';
 import Scroll from './Scroll';
-import './app.css';
+import './styles/app.css';
 
 class App extends Component {
   constructor() {
@@ -78,14 +78,68 @@ class App extends Component {
       });
   };
 
+  //Vanilla JS rather than the "react-way"
+  //Research "refs" and connvert (Still to learn)
+  leftClick = () => {
+    let element = document.getElementById('cardID');
+
+    //get current right style string
+    let rightValue = this.getRight();
+    //parse string to num for current right value
+    let rightNum = parseInt(rightValue);
+
+    //subtract the width of a node from the current right position
+    if (rightNum <= -336) {
+      rightNum = rightNum;
+    } else {
+      rightNum -= 336;
+    }
+
+    //convert value back to string
+    let finalValue = rightNum.toString() + 'px';
+    //Execute string into document
+    element.style.right = finalValue;
+  };
+
+  rightClick = () => {
+    let element = document.getElementById('cardID');
+
+    //get current right style string
+    let rightValue = this.getRight();
+    //parse string to num for current right value
+    let rightNum = parseInt(rightValue);
+
+    //add the width of a node from the current right position
+    //
+    if (rightNum >= 2352) {
+      rightNum = rightNum;
+    } else {
+      rightNum += 336;
+    }
+
+    //convert value back to string
+    let finalValue = rightNum.toString() + 'px';
+    //Execute string into document
+    element.style.right = finalValue;
+  };
+
+  getRight = () => {
+    let element = document.getElementById('cardID');
+    let styles = window.getComputedStyle(element);
+    let right = styles.right;
+    //console.log(right);
+    //console.log(typeof right);
+
+    return right;
+  };
+
   render() {
     if (this.state.loading) {
       return <div>Loading</div>;
     }
     return (
       <main style={styles.main} className="scale">
-        <div style={styles.cards}>
-          {console.log('render')}
+        <div style={styles.cards} id="cardID" className="cardContainer">
           {this.state.jsonData.map((jdata, jindex) => (
             <Card
               key={jindex}
@@ -101,7 +155,10 @@ class App extends Component {
             />
           ))}
         </div>
-        <Scroll />
+        <Scroll
+          leftClick={this.leftClick.bind(this)}
+          rightClick={this.rightClick.bind(this)}
+        />
       </main>
     );
   }
@@ -109,10 +166,11 @@ class App extends Component {
 const styles = {
   cards: {
     display: 'flex',
-    overflow: 'hidden'
+    position: 'relative'
   },
   main: {
-    margin: 'auto'
+    margin: 'auto',
+    overflow: 'hidden'
   }
 };
 
