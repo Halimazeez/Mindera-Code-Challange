@@ -41,7 +41,7 @@
       "text": "You’re given an incredible amount of freedom and autonomy at Mindera. That goes for everyone.",
       "image_url": "https://picsum.photos/300/150/?random",
       "href": "https://mindera.com/people-and-culture/faq/",
-      "is_liked": false
+      "is_liked": true
     },
     {
       "id": 6,
@@ -49,7 +49,7 @@
       "text": "Our flat structure calls for it by necessity. Being a leader may feel unnatural at first, but we expect everyone to step up and own part of the project.",
       "image_url": "https://picsum.photos/300/150/?random",
       "href": "https://mindera.com/people-and-culture/faq/",
-      "is_liked": false
+      "is_liked": true
     },
     {
       "id": 7,
@@ -58,7 +58,7 @@
       "text": "Humans are not perfect. Don’t be afraid to fail. And when you do, you might as well fail spectacularly. This is how we grow and learn.",
       "image_url": "https://picsum.photos/300/150/?random",
       "href": "https://mindera.com/people-and-culture/faq/",
-      "is_liked": false
+      "is_liked": true
     },
     {
       "id": 8,

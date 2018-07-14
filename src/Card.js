@@ -2,7 +2,18 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class Card extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  sendCallBack = () => {
+    this.props.callBack(this.props.id, this.props.liked);
+  };
+
   render() {
+    // console.log('id:' + this.props.id + 'liked:' + this.props.liked);
+    //console.log(typeof this.props.id);
+
     //My face
     const avatarurl =
       'https://media.licdn.com/dms/image/C4D03AQEcGwaJjqKikA/profile-displayphoto-shrink_200_200/0?e=1536796800&v=beta&t=Clz9gIhNEeAcdVStgHEk3yrVhINIIVI40giF41oVXTY';
@@ -25,15 +36,17 @@ class Card extends Component {
 
           <div style={styles.sectionTxt}>{this.props.text}</div>
         </a>
-        <div style={styles.actionBtn}>
+        <div style={styles.actionBtn} onClick={this.sendCallBack}>
           {this.props.liked === true ? (
-            <div>
-              <a href="#" style={styles.href}>
+            <a style={styles.href}>
+              <div>
                 <div>&#10084;</div>
-              </a>
-            </div>
+              </div>
+            </a>
           ) : (
-            <div>&#9825;</div>
+            <a style={styles.href}>
+              <div>&#9825;</div>
+            </a>
           )}
         </div>
       </section>
@@ -55,7 +68,7 @@ const styles = {
     display: 'block',
     maxWidth: '308px',
     lineHeight: '19px',
-    margin: 'auto',
+    marginLeft: '26px',
     border: '1px solid #eee',
     borderRadius: '1px',
     boxShadow: '0px 1px 1px 0px rgba(0, 0, 0, 0.1)',
@@ -125,7 +138,8 @@ const styles = {
 
   //Link decoration
   href: {
-    textDecoration: 'none'
+    textDecoration: 'none',
+    cursor: 'pointer'
   }
 };
 
