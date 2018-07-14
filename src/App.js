@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Card from './Card';
+import Scroll from './Scroll';
+import './app.css';
 
 class App extends Component {
   constructor() {
@@ -12,6 +14,7 @@ class App extends Component {
 
   componentDidMount() {
     //get entire JSON payload and save to class state
+    //state always loads from JSON not local
     fetch('http://localhost:3001/cards')
       .then(response => response.json())
       .then(jsonresponse => {
@@ -49,12 +52,12 @@ class App extends Component {
     //update state with object key as pointer
     jsonData[ref].is_liked = payload;
     //triggeres a re-render of the components,
-    //requests read from state rather than JSON (FASTER)
+    //updates state state rather than reading from JSON (FASTER)
     this.setState({
       jsonData
     });
 
-    //Push new payload into the Json REST End API
+    //Push new payload into the Json REST End API for sync of state
     this.updateDB(id, payload);
   };
 
@@ -80,31 +83,36 @@ class App extends Component {
       return <div>Loading</div>;
     }
     return (
-      <div style={styles.root}>
-        {console.log('render')}
-        {this.state.jsonData.map((jdata, jindex) => (
-          <Card
-            key={jindex}
-            id={jdata.id}
-            header={jdata.title}
-            subheader={this.isUndefined(jdata.subtitle)}
-            image={jdata.image_url}
-            liked={jdata.is_liked}
-            href={jdata.href}
-            text={jdata.text}
-            // send like status back with id later as a *pointer to JSON
-            callBack={this.callBack.bind(this)}
-          />
-        ))}
-      </div>
+      <main style={styles.main} className="scale">
+        <div style={styles.cards}>
+          {console.log('render')}
+          {this.state.jsonData.map((jdata, jindex) => (
+            <Card
+              key={jindex}
+              id={jdata.id}
+              header={jdata.title}
+              subheader={this.isUndefined(jdata.subtitle)}
+              image={jdata.image_url}
+              liked={jdata.is_liked}
+              href={jdata.href}
+              text={jdata.text}
+              // send like status back with id later as a *pointer to JSON
+              callBack={this.callBack.bind(this)}
+            />
+          ))}
+        </div>
+        <Scroll />
+      </main>
     );
   }
 }
 const styles = {
-  root: {
-    marginTop: 10,
-    marginBottom: 10,
-    display: 'flex'
+  cards: {
+    display: 'flex',
+    overflow: 'hidden'
+  },
+  main: {
+    margin: 'auto'
   }
 };
 

@@ -2,14 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class Card extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   sendCallBack = () => {
     this.props.callBack(this.props.id, this.props.liked);
   };
-
   render() {
     // console.log('id:' + this.props.id + 'liked:' + this.props.liked);
     //console.log(typeof this.props.id);
@@ -24,10 +19,9 @@ class Card extends Component {
           <div style={styles.sectionImg}>
             <img src={this.props.image} style={styles.img} alt="Random" />
           </div>
-
-          <img src={avatarurl} style={styles.avatar} alt="Avatar" />
-
           <div style={styles.sectionHeader}>
+            <img src={avatarurl} style={styles.avatar} alt="Avatar" />
+
             <div style={styles.sectionHeaderText}>
               <h1 style={styles.header}>{this.props.header}</h1>
               <h5 style={styles.subheader}>{this.props.subheader}</h5>
@@ -38,15 +32,13 @@ class Card extends Component {
         </a>
         <div style={styles.actionBtn} onClick={this.sendCallBack}>
           {this.props.liked === true ? (
-            <a style={styles.href}>
-              <div>
-                <div>&#10084;</div>
-              </div>
-            </a>
+            <i className="material-icons" style={styles.href}>
+              favorite
+            </i>
           ) : (
-            <a style={styles.href}>
-              <div>&#9825;</div>
-            </a>
+            <i className="material-icons" style={styles.href}>
+              favorite_border
+            </i>
           )}
         </div>
       </section>
@@ -62,13 +54,14 @@ Card.propTypes = {
   text: PropTypes.string
 };
 
-//JSX styling because pure Reactjs
+//JSX styling because pure pure React.js
 const styles = {
   root: {
-    display: 'block',
+    display: 'flex',
+    flexWrap: 'wrap',
     maxWidth: '308px',
     lineHeight: '19px',
-    marginLeft: '26px',
+    margin: '26px 13px 26px 13px',
     border: '1px solid #eee',
     borderRadius: '1px',
     boxShadow: '0px 1px 1px 0px rgba(0, 0, 0, 0.1)',
@@ -86,12 +79,13 @@ const styles = {
 
   //header section
   sectionHeader: {
-    padding: '19px',
-    paddingBottom: '0px',
     display: 'flex'
   },
   sectionHeaderText: {
-    marginLeft: '60px'
+    paddingBottom: '0px',
+    padding: '19px 0',
+    //marginLeft: '60px',
+    maxHeight: '44px'
   },
   subheader: {
     margin: '0',
@@ -109,7 +103,7 @@ const styles = {
     marginTop: '2px'
   },
   avatar: {
-    position: 'absolute',
+    position: 'relative',
     margin: '15px 19px',
     width: 'auto',
     height: 'auto',
@@ -120,7 +114,7 @@ const styles = {
 
   //Text section
   sectionTxt: {
-    padding: '19px',
+    padding: '0 19px',
     fontSize: '12px',
     lineHeight: '1.583',
     color: '#3A3A3A'
@@ -129,17 +123,17 @@ const styles = {
   //Action button
   actionBtn: {
     color: '#27ae60',
-    textAlign: 'center',
-    fontSize: '30px',
-    lineHeight: '40px',
-    width: '50px',
-    margin: 'auto'
+    margin: '0px auto',
+    display: 'flex',
+    alignItems: 'flex-end',
+    paddingBottom: '12px'
   },
 
   //Link decoration
   href: {
     textDecoration: 'none',
-    cursor: 'pointer'
+    cursor: 'pointer',
+    userSelect: 'none'
   }
 };
 
