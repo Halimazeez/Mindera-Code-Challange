@@ -1,0 +1,12 @@
+336* One node
+672* Two node
+1008* Three node
+
+-336* -One node
+-672* -Two node
+-1008* -Three node
+
+//default values
+mobile view - right: 1344px;
+mid view - right: 1008px;
+large view - right: 672px;

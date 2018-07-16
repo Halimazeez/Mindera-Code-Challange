@@ -3,6 +3,13 @@ import PropTypes from 'prop-types';
 import './styles/card.css';
 
 class Card extends Component {
+  componentDidMount() {
+    if (this.props.text === 'ad.') {
+      console.log('start');
+      let element = document.getElementById('cardID');
+      element.styles.right = 0;
+    }
+  }
   sendCallBack = () => {
     this.props.callBack(this.props.id, this.props.liked);
   };
@@ -15,10 +22,14 @@ class Card extends Component {
       'https://media.licdn.com/dms/image/C4D03AQEcGwaJjqKikA/profile-displayphoto-shrink_200_200/0?e=1536796800&v=beta&t=Clz9gIhNEeAcdVStgHEk3yrVhINIIVI40giF41oVXTY';
 
     return (
-      <section style={styles.root} className="hover">
+      <section style={styles.root} className="hover" id="card">
         <a href={this.props.href} style={styles.href}>
           <div style={styles.sectionImg}>
-            <img src={this.props.image} style={styles.img} alt="Random" />
+            <img
+              src={this.props.image}
+              style={styles.img}
+              alt="Please execute yarn start-api"
+            />
           </div>
           <div style={styles.sectionHeader}>
             <img src={avatarurl} style={styles.avatar} alt="Avatar" />
@@ -53,6 +64,13 @@ Card.propTypes = {
   header: PropTypes.string,
   subheader: PropTypes.string,
   text: PropTypes.string
+};
+
+Card.defaultProps = {
+  header: 'Please execute',
+  subheader: 'yarn start-api',
+  text: 'Run the API',
+  image: 'lol'
 };
 
 //JSX styling because pure pure React.js
@@ -115,7 +133,7 @@ const styles = {
 
   //Text section
   sectionTxt: {
-    padding: '0 19px',
+    padding: '19px',
     fontSize: '12px',
     lineHeight: '1.583',
     color: '#3A3A3A'

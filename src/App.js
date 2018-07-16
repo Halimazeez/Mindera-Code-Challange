@@ -2,13 +2,18 @@ import React, { Component } from 'react';
 import Card from './Card';
 import Scroll from './Scroll';
 import './styles/app.css';
+import Loading from './Loading';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      jsonData: [],
-      loading: true
+      loading: true,
+      jsonData: [
+        {
+          errorstate: 1
+        }
+      ]
     };
   }
 
@@ -24,10 +29,14 @@ class App extends Component {
         });
       })
       .catch(error => {
-        console.log('error' + error);
+        console.log('error: ' + error);
+        this.setState({
+          loading: false
+        });
       });
   }
 
+  //Default proptypes already in-use for non-api server running
   isUndefined = data => {
     let finalSubTitle = '';
     if (typeof data === 'undefined') {
@@ -39,6 +48,7 @@ class App extends Component {
     return finalSubTitle;
   };
 
+  recall = () => {};
   //function uses the id prop sent back from child as ref
   callBack = (id, liked) => {
     const { jsonData } = this.state;
@@ -89,7 +99,7 @@ class App extends Component {
     let rightNum = parseInt(rightValue);
 
     //subtract the width of a node from the current right position
-    if (rightNum <= -336) {
+    if (rightNum <= -1334) {
       rightNum = rightNum;
     } else {
       rightNum -= 336;
@@ -111,7 +121,7 @@ class App extends Component {
 
     //add the width of a node from the current right position
     //
-    if (rightNum >= 2352) {
+    if (rightNum >= 1344) {
       rightNum = rightNum;
     } else {
       rightNum += 336;
@@ -135,7 +145,7 @@ class App extends Component {
 
   render() {
     if (this.state.loading) {
-      return <div>Loading</div>;
+      return <Loading />;
     }
     return (
       <main style={styles.main} className="scale">
@@ -146,7 +156,7 @@ class App extends Component {
               id={jdata.id}
               header={jdata.title}
               subheader={this.isUndefined(jdata.subtitle)}
-              image={jdata.image_url}
+              image={`${jdata.image_url}=${jdata.id}`}
               liked={jdata.is_liked}
               href={jdata.href}
               text={jdata.text}

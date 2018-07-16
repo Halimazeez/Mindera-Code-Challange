@@ -1,40 +1,24 @@
-/*Mobile Screen with one component
+/*Mobile Screen with one component showing*/
 @media screen and (max-width: 1034px) {
   .scale {
     width: 336px;
   }
-  .cardContainer {
-    right: 1344px;
-  }
 }
-*/
-/* 3 components  */
+
+/* 3 components show*/
 @media screen and (min-width: 1034px) {
   .scale {
     width: 1008px;
   }
-  .cardContainer {
-    right: 1008px;
-  }
 }
 
-/*Full screen 5 components
+/* 5 components show*/
 @media screen and (min-width: 1706px) {
   .scale {
     width: 1680px;
   }
-  .cardContainer {
-    right: 672px;
-  }
 }
-*/
-/*
-@media screen and (min-width: 1360px) {
-  .scale {
-    width: 1344px;
-  }
-  .cardContainer {
-    right: 672px;
-  }
+
+.cardContainer {
+  justify-content: center;
 }
-*/
