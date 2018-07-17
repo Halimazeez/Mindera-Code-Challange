@@ -9,11 +9,7 @@ class App extends Component {
     super();
     this.state = {
       loading: true,
-      jsonData: [
-        {
-          errorstate: 1
-        }
-      ]
+      jsonData: [{}]
     };
   }
 
@@ -48,7 +44,6 @@ class App extends Component {
     return finalSubTitle;
   };
 
-  recall = () => {};
   //function uses the id prop sent back from child as ref
   callBack = (id, liked) => {
     const { jsonData } = this.state;

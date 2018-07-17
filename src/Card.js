@@ -25,11 +25,7 @@ class Card extends Component {
       <section style={styles.root} className="hover" id="card">
         <a href={this.props.href} style={styles.href}>
           <div style={styles.sectionImg}>
-            <img
-              src={this.props.image}
-              style={styles.img}
-              alt="Please execute yarn start-api"
-            />
+            <img src={this.props.image} style={styles.img} alt="Image" />
           </div>
           <div style={styles.sectionHeader}>
             <img src={avatarurl} style={styles.avatar} alt="Avatar" />
@@ -63,13 +59,14 @@ Card.propTypes = {
   image: PropTypes.any,
   header: PropTypes.string,
   subheader: PropTypes.string,
-  text: PropTypes.string
+  text: PropTypes.string,
+  sendCallBack: PropTypes.func,
+  href: PropTypes.string
 };
 
 Card.defaultProps = {
-  header: 'Please execute',
-  subheader: 'yarn start-api',
-  text: 'Run the API',
+  header: 'yarn start-api',
+  text: 'Cards will load automatically when the api server has started.',
   image: 'lol'
 };
 

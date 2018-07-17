@@ -6,7 +6,7 @@
 -672* -Two node
 -1008* -Three node
 
-//default values
+//default values, old style
 mobile view - right: 1344px;
 mid view - right: 1008px;
 large view - right: 672px;
